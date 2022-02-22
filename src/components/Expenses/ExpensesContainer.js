@@ -1,8 +1,8 @@
 import ExpenseItem from "./ExpenseItem";
-import Card from "./Card";
+import Card from "../UI/Card";
 import './Expenses.css';
 
-export default function ExpensesContainer({ expenses }) {
+const ExpensesContainer = ({ expenses }) => {
     const displayExpenses = () => {
         return expenses.map((expense) => {
             return <ExpenseItem key={expense.id} expense={expense} />;
@@ -11,3 +11,5 @@ export default function ExpensesContainer({ expenses }) {
 
     return <Card className='expenses'>{displayExpenses()}</Card>;
 }
+
+export default ExpensesContainer;
