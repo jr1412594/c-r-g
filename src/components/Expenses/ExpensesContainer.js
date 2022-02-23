@@ -3,10 +3,16 @@ import { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
-import './Expenses.css'
+import ExpenseList from "./ExpenseList";
+
+import "./Expenses.css";
 
 const ExpensesContainer = ({ expenses }) => {
     const [year, setYear] = useState("2019");
+
+    const onSelectedYear = (selectedYear) => {
+        setYear(selectedYear);
+    };
 
     const displayExpenses = () => {
         return expenses
@@ -18,16 +24,6 @@ const ExpensesContainer = ({ expenses }) => {
             });
     };
 
-    const spentMoneyOrNot = () => { 
-        return displayExpenses().length === 0
-        ? <p className="expenses-list__fallback">No expenses to check</p>
-        : displayExpenses()
-    }
-
-    const onSelectedYear = (selectedYear) => {
-        setYear(selectedYear);
-    };
-
     return (
         <Card className="expenses">
             <ExpensesFilter
@@ -35,7 +31,7 @@ const ExpensesContainer = ({ expenses }) => {
                 selected={year}
                 expenses={expenses}
             />
-            {spentMoneyOrNot()}
+            <ExpenseList displayExpenses={displayExpenses} />
         </Card>
     );
 };
