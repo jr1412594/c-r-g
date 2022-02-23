@@ -8,11 +8,9 @@ const App = () => {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
     const addExpense = (expenseToAdd) => {
-        console.log(expenseToAdd, " :from app");
         setExpenses((prevState) => {
-            return [...prevState, expenseToAdd];
+            return [expenseToAdd,...prevState];
         });
-        console.log(expenses, "in add Expense");
     };
 
     return (

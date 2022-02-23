@@ -23,6 +23,7 @@ const ExpensesFilter = ({ expenses, onSelectedYear, selected }) => {
             <div className="expenses-filter_control">
                 <label>Filter by year: </label>
                 <select value={selected} onChange={handleChange}>
+                    <option value='2100'>2100</option>
                     {displayDate()}
                 </select>
             </div>
