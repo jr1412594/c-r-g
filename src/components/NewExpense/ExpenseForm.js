@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveExpenseData }) => {
 
     const [expense, setExpense] = useState({
         title: "",
@@ -17,8 +17,8 @@ const ExpenseForm = () => {
     
     const submitHandler = (event) => {
         event.preventDefault();
-        let updatedExpense = {...expense, [expense.date]: new Date(expense.date) }
-        console.log(updatedExpense, " :this data has been submitted")
+        let updatedExpense = {...expense, [expense.date]: new Date(expense.date) };
+        onSaveExpenseData(updatedExpense)
         setExpense({
             title: '',
             amount: '',

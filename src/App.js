@@ -2,6 +2,7 @@ import ExpensesContainer from "./components/Expenses/ExpensesContainer";
 import NewExpense from "./components/NewExpense/NexExpense";
 
 const App = () => {
+
     const expenses = [
         {
             id: "e1",
@@ -35,10 +36,16 @@ const App = () => {
         },
     ];
 
+    const addExpense = (expenseToAdd) => {
+      console.log(expenseToAdd, " :from app")
+      return [...expenses, expenseToAdd];
+      // console.log(newExpenses, " :Expenses AD.")
+    }
+
     return (
         <div>
             <h2>Let's get started!</h2>
-            <NewExpense />
+            <NewExpense addExpense={addExpense}/>
             <ExpensesContainer expenses={expenses} />
         </div>
     );
