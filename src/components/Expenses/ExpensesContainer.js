@@ -4,6 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpenseList from "./ExpenseList";
+import ExpensesChart from "./ExpensesChart";
 
 import "./Expenses.css";
 
@@ -14,15 +15,13 @@ const ExpensesContainer = ({ expenses }) => {
         setYear(selectedYear);
     };
 
-    const displayExpenses = () => {
-        return expenses
-            .map((expense) => {
+    const filteredExpenses = expenses.filter(expense => {
+        return expense.date.getFullYear() === +year;
+    })
+
+    const displayExpenses = filteredExpenses.map(expense => {
                 return <ExpenseItem key={expense.id} expense={expense} />;
-            })
-            .filter((expense) => {
-                return expense.props.expense.date.getFullYear() === +year;
             });
-    };
 
     return (
         <Card className="expenses">
@@ -31,6 +30,7 @@ const ExpensesContainer = ({ expenses }) => {
                 selected={year}
                 expenses={expenses}
             />
+            <ExpensesChart filteredExpenses={filteredExpenses}/>
             <ExpenseList displayExpenses={displayExpenses} />
         </Card>
     );

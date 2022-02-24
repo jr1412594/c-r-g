@@ -63,7 +63,7 @@ const ExpenseForm = ({ onSaveExpenseData,handelFormRender }) => {
                 </div>
             </div>
             <div className="new-expense_actions">
-                <button onClick={handelFormRender}>Cancel</button>
+                <button type="button" onClick={handelFormRender}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
