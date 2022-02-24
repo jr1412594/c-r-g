@@ -21,7 +21,7 @@ const NewExpense = ({ addExpense }) => {
     const showFormOrAddExpense = showForm ? (
     <ExpenseForm onSaveExpenseData={saveExpenseData} handelFormRender={handelFormRender}/>
     ) : (
-        <button onClick={handelFormRender}>Add Expense</button>
+        <button onClick={handelFormRender}>Add New Expense</button>
     )
 
     return (
